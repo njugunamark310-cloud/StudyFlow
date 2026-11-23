@@ -7,12 +7,23 @@ function Subjects () {
     return (
       <div>
         <h2>My Subjects</h2>
-        <button onClick={() => setSubjects([...subjects, "Python"])}>
+    <button
+         onClick={() => {
+            if (!subjects.includes("Python")) {
+                setSubjects([...subjects, "Python"])
+            }
+        }}
+        >
             Add Python
         </button>
         <ul>
             {subjects.map((subject) => (
-                <li key={subject}>{subject}</li>
+                <li key={subject}>
+                    {subject}
+            <button onClick={() => setSubjects(subjects.filter((item) => item !== subject))}>
+                remove
+            </button>
+        </li>
 
             ))}
         </ul>
