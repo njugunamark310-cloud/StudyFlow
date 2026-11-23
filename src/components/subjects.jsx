@@ -2,7 +2,7 @@ import { useState } from "react"
 
 
 
-function Subjects ({ subjects, addSubject }) {
+function Subjects ({ subjects, addSubject, removeSubject }) {
     const [newSubject, setNewSubject] = useState("")
     
     return (
@@ -27,17 +27,22 @@ function Subjects ({ subjects, addSubject }) {
         >
             Add Subject
         </button>
-        <ul>
-            {subjects.map((subject) => (
-                <li key={subject}>
-                    {subject}
-            <button onClick={() => setSubjects(subjects.filter((item) => item !== subject))}>
-                remove
-            </button>
-        </li>
-
-            ))}
-        </ul>
+        { subjects.length === 0 ? (
+             <p>No subjects yet. Add your first subject!</p>
+        ) : (
+            <ul>
+                {subjects.map((subject) => (
+               <li key={subject}>
+                 {subject}
+                 <button onClick={() => removeSubject(subject)}>
+                    remove
+                 </button>
+               </li>
+                ))}
+            </ul>
+        )}
+ 
+        
       </div>
     )
     
