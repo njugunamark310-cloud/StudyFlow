@@ -4,7 +4,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Welcome description="Your personal study companion" />
+      <Welcome description="Oranise your learning, one task at a time." />
     </div>
   )
 }
