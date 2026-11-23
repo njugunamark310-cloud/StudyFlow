@@ -14,6 +14,11 @@ function App() {
     setSubjects([...subjects, subject])
   }
 
+  function removeSubject(subjectToRemove) {
+    setSubjects(subjects.filter((subject) => subject !== subjectToRemove))
+
+  }
+
   return (
     <div>
       <Header />
@@ -24,6 +29,7 @@ function App() {
       <Subjects 
           subjects={subjects}
           addSubject={addSubject}
+          removeSubject={removeSubject}
       />
     </div>
   )
