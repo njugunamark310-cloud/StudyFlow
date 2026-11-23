@@ -4,7 +4,9 @@ function App() {
   return (
     <div>
       <Header />
-      <Welcome description="Oranise your learning, one task at a time." />
+      <Welcome
+       name="Mark"
+       description="Oranise your learning, one task at a time." />
     </div>
   )
 }
