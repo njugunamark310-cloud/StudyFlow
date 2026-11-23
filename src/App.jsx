@@ -6,7 +6,8 @@ function App() {
       <Header />
       <Welcome
        name="Mark"
-       description="Oranise your learning, one task at a time." />
+       role="Student"
+       description="Organise your learning, one task at a time." />
     </div>
   )
 }
