@@ -2,9 +2,9 @@ import { useState } from "react"
 
 
 
-function Subjects () {
-    const [subjects, setSubjects] = useState(["React", "Javascript", "HTML", "CSS"])
+function Subjects ({ subjects, addSubject }) {
     const [newSubject, setNewSubject] = useState("")
+    
     return (
       <div>
         <h2>My Subjects</h2>
@@ -14,14 +14,18 @@ function Subjects () {
           onChange={(event) => setNewSubject(event.target.value)}
           placeholder="Enter a subject"
         />
-    <button
-         onClick={() => {
-            if (!subjects.includes("Python")) {
-                setSubjects([...subjects, "Python"])
+   <button 
+        onClick={() => {
+            if (
+                newSubject.trim() !== ""&&
+                !subjects.includes(newSubject.trim())
+            ) {
+                addSubject(newSubject.trim())
+                setNewSubject("")
             }
         }}
         >
-            Add Python
+            Add Subject
         </button>
         <ul>
             {subjects.map((subject) => (
