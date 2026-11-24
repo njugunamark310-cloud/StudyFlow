@@ -28,7 +28,9 @@ function App() {
       <Welcome
        name="Mark"
        role="Student"
-       description="Organise your learning, one task at a time." />
+      description="Organise your learning, one task at a time." />
+    
+  <div className="dashboard-content">
       <Subjects 
           subjects={subjects}
           addSubject={addSubject}
@@ -36,6 +38,7 @@ function App() {
       />
       <Tasks />
     </div>
+  </div>
   )
 }
 

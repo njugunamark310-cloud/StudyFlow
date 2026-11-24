@@ -5,4 +5,23 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 16px;
+  }
+
+ .dashboard-content {
+    grid-template-columns: 1fr;
+  }
 }
