@@ -1,16 +1,78 @@
-# React + Vite
+# StudyFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive study dashboard built with React to help students organise their learning, manage subjects and track tasks.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add and remove subjects.
+- Search through subjects.
+- Fetch tasks from an external API.
+- Mark tasks as completed or undo completion.
+- Filter tasks by All, Active and Completed.
+- Save subjects using localStorage.
+- Responsive desktop and mobile layout.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- CSS
+- Vite
+- DummyJSON API
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+Clone the repository:
+
+```bash
+git clone git@github.com:njugunamark310-cloud/StudyFlow.git
+```
+
+Navigate into the project directory:
+
+```bash
+cd studyflow
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## API Integration
+
+StudyFlow retrieves sample tasks from:
+
+https://dummyjson.com/todos?limit=5
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── Header.jsx
+│   ├── welcome.jsx
+│   ├── subjects.jsx
+│   └── Tasks.jsx
+├── App.jsx
+├── App.css
+├── index.css
+└── main.jsx
+```
+
+## Development
+
+This project was built as part of my journey learning React, component architecture, state management, effects and API integration.
+
+## Author
+
+Built with React as a hands-on learning project.
