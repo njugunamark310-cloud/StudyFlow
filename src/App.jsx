@@ -2,13 +2,15 @@ import { useState } from "react"
 import Welcome from "./components/welcome"
 import Header from "./components/Header"
 import Subjects from "./components/subjects"
+import Tasks from "./components/Tasks"
 function App() {
-  const [subjects, setSubjects] = useState([
-    "React",
-    "Javascript",
-    "HTML",
-    "CSS"
-  ])
+  const [subjects, setSubjects] = useState(() => {
+    const savedSubjects = localStorage.getItem("subjects")
+
+    return savedSubjects
+    ? JSON.parse(savedSubjects)
+    : ["React", "Javascript", "HTML", "CSS"]
+  })
 
   function addSubject(subject) {
     setSubjects([...subjects, subject])
@@ -31,6 +33,7 @@ function App() {
           addSubject={addSubject}
           removeSubject={removeSubject}
       />
+      <Tasks />
     </div>
   )
 }
