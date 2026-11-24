@@ -58,6 +58,8 @@ function Subjects ({ subjects, addSubject, removeSubject }) {
     </form>
         { subjects.length === 0 ? (
              <p>No subjects yet. Add your first subject!</p>
+        ) : filteredSubjects.length === 0 ? (
+            <p>No subjects match your search.</p>
         ) : (
             <ul>
                 {filteredSubjects.map((subject) => (
