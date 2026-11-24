@@ -27,13 +27,24 @@ function Tasks() {
             setLoading(false)
         }
 
-        getTasks()
+       
     }
+
+     getTasks()
 
     }, [])
     return (
         <section>
             <h2>My Tasks</h2>
+            {loading && <p>Loading tasks...</p>}
+            {error && <p>{error}</p>}
+        <ul>
+            {tasks.map((task) => (
+                <li key={task.id}>
+                    {task.title}
+                </li>
+            ))}
+        </ul>
         </section>
     )
 }
