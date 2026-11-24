@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 
@@ -26,6 +26,11 @@ function Subjects ({ subjects, addSubject, removeSubject }) {
        setNewSubject("")
        setMessage("Subject added successfully!")
        }
+
+       useEffect(() => {
+        localStorage.setItem("subjects", JSON.stringify(subjects))
+       }, [subjects])
+       
     const filteredSubjects = subjects.filter((subject) =>
     subject.toLowerCase().includes(searchTerm.toLowerCase())
    )
