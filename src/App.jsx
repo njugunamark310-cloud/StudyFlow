@@ -3,6 +3,7 @@ import Welcome from "./components/welcome"
 import Header from "./components/Header"
 import Subjects from "./components/subjects"
 import Tasks from "./components/Tasks"
+import "./App.css"
 function App() {
   const [subjects, setSubjects] = useState(() => {
     const savedSubjects = localStorage.getItem("subjects")
@@ -22,7 +23,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <Header />
       <Welcome
        name="Mark"
