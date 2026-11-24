@@ -8,7 +8,10 @@ function Tasks() {
     useEffect(() => {
         async function getTasks() {
           try {
-            const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=5")
+            const response = await fetch(
+                "https://jsonplaceholder.typicode.com/todos?_limit=5",
+                { signal: controller.signal}
+            )
 
             if (!response.ok) {
                 throw new Error("Failed to fetch tasks")
@@ -29,6 +32,8 @@ function Tasks() {
 
        
     }
+
+    const controller = new AbortController()
 
      getTasks()
 
