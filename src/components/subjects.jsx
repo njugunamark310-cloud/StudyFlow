@@ -26,7 +26,9 @@ function Subjects ({ subjects, addSubject, removeSubject }) {
        setNewSubject("")
        setMessage("Subject added successfully!")
        }
-
+    const filteredSubjects = subjects.filter((subject) =>
+    subject.toLowerCase().includes(searchTerm.toLowerCase())
+   )
     return (
       <div>
         <h2>My Subjects</h2>
@@ -58,7 +60,7 @@ function Subjects ({ subjects, addSubject, removeSubject }) {
              <p>No subjects yet. Add your first subject!</p>
         ) : (
             <ul>
-                {subjects.map((subject) => (
+                {filteredSubjects.map((subject) => (
                <li key={subject}>
                  {subject}
                  <button onClick={() => removeSubject(subject)}>
