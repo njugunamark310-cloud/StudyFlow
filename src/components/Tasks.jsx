@@ -4,6 +4,23 @@ function Tasks() {
     const [tasks, setTasks] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
+    const [filter, setFilter] = useState("all")
+
+    function toggleTask(taskId) {
+        setTasks(
+    tasks.map((task) =>
+      task.id === taskId
+        ? { ...task, completed: !task.completed }
+        : task
+    )
+  )
+}   
+    const filteredTasks = tasks.filter((task) => {
+    if (filter === "active") return !task.completed
+    if (filter === "completed") return task.completed
+
+    return true
+})
 
     useEffect(() => {
         async function getTasks() {
@@ -49,12 +66,24 @@ function Tasks() {
             {loading && <p>Loading tasks...</p>}
             {error && <p>{error}</p>}
         <ul>
-            {tasks.map((task) => (
-                <li key={task.id}>
-                    {task.title}
-                </li>
-            ))}
-        </ul>
+  {tasks.map((task) => (
+    <li key={task.id}>
+      <span
+        style={{
+          textDecoration: task.completed ? "line-through" : "none",
+          opacity: task.completed ? 0.5 : 1
+        }}
+      >
+        {task.title}
+      </span>
+
+      <button onClick={() => toggleTask(task.id)}>
+        {task.completed ? "Undo" : "Complete"}
+      </button>
+      
+    </li>
+  ))}
+</ul>
         </section>
     )
 }
