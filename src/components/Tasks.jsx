@@ -6,16 +6,16 @@ function Tasks() {
     const [error, setError] = useState("")
     const [filter, setFilter] = useState("all")
 
-    function toggleTask(taskId) {
-        setTasks(
-    tasks.map((task) =>
-      task.id === taskId
-        ? { ...task, completed: !task.completed }
-        : task
+   function toggleTask(taskId) {
+    setTasks(
+        tasks.map((task) =>
+            task.id === taskId
+                ? { ...task, completed: !task.completed }
+                : task
+        )
     )
-  )
-}   
-    const filteredTasks = tasks.filter((task) => {
+}
+  const filteredTasks = tasks.filter((task) => {
     if (filter === "active") return !task.completed
     if (filter === "completed") return task.completed
 
@@ -63,10 +63,15 @@ function Tasks() {
     return (
         <section>
             <h2>My Tasks</h2>
+   <div className="task-filters">
+        <button onClick={() => setFilter("all")}>All</button>
+        <button onClick={() => setFilter("active")}>Active</button>
+        <button onClick={() => setFilter("completed")}>Completed</button>
+   </div>
             {loading && <p>Loading tasks...</p>}
             {error && <p>{error}</p>}
         <ul>
-  {tasks.map((task) => (
+  {filteredTasks.map((task) => (
     <li key={task.id}>
       <span
         style={{
