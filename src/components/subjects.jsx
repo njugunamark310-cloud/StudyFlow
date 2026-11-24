@@ -4,30 +4,41 @@ import { useState } from "react"
 
 function Subjects ({ subjects, addSubject, removeSubject }) {
     const [newSubject, setNewSubject] = useState("")
+    const [message, setMessage] = useState("")
 
     function handleSubmit(event) {
         event.preventDefault()
 
         const trimmedSubject = newSubject.trim()
 
-        if (
-            trimmedSubject !== "" &&
-            !subjects.includes(trimmedSubject)
-        ) {
-            addSubject(trimmedSubject)
-            setNewSubject("")
-        }
-    }
-    
+       if (trimmedSubject === "") {
+        setMessage("Please enter a subject.")
+        return
+       }
+
+       if (subjects.includes(trimmedSubject)) {
+        setMessage("This subject already exists.")
+        return
+       }
+
+       addSubject(trimmedSubject)
+       setNewSubject("")
+       setMessage("Subject added successfully!")
+       }
+
     return (
       <div>
         <h2>My Subjects</h2>
         <p>You have {subjects.length} {subjects.length === 1 ? "subject": "subjects"}.</p>
     <form onSubmit={handleSubmit}>
+        {message && <p>{message}</p>}
         <input 
           type="text"
           value={newSubject}
-          onChange={(event) => setNewSubject(event.target.value)}
+          onChange={(event) => {
+            setNewSubject(event.target.value)
+            setMessage("")
+          }}
           placeholder="Enter a subject"
         />
 
@@ -53,6 +64,6 @@ function Subjects ({ subjects, addSubject, removeSubject }) {
         
       </div>
     )
-    
+
 }
  export default Subjects
