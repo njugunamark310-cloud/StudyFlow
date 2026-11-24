@@ -5,6 +5,7 @@ import { useState } from "react"
 function Subjects ({ subjects, addSubject, removeSubject }) {
     const [newSubject, setNewSubject] = useState("")
     const [message, setMessage] = useState("")
+    const [searchTerm, setSearchTerm] = useState("")
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -30,6 +31,13 @@ function Subjects ({ subjects, addSubject, removeSubject }) {
       <div>
         <h2>My Subjects</h2>
         <p>You have {subjects.length} {subjects.length === 1 ? "subject": "subjects"}.</p>
+
+        <input 
+           type="text"
+           value={searchTerm}
+           onChange={(event) => setSearchTerm(event.target.value)}
+           placeholder="Search subjects..."
+        />
     <form onSubmit={handleSubmit}>
         {message && <p>{message}</p>}
         <input 
