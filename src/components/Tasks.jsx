@@ -22,12 +22,16 @@ function Tasks() {
             setTasks(data)
 
         } catch (error) {
+           if (error.name !== "AbortError") {
             setError(error.message)
+           }
             
         }
 
         finally {
-            setLoading(false)
+            if (!controller.signal.aborted) {
+                setLoading(false)
+            }
         }
 
        
@@ -36,7 +40,8 @@ function Tasks() {
     const controller = new AbortController()
 
      getTasks()
-
+    
+    return () => controller.abort()
     }, [])
     return (
         <section>
