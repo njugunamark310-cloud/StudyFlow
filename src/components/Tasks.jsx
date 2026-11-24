@@ -26,7 +26,7 @@ function Tasks() {
         async function getTasks() {
           try {
             const response = await fetch(
-                "https://jsonplaceholder.typicode.com/todos?_limit=5",
+                "https://dummyjson.com/todos?limit=5",
                 { signal: controller.signal}
             )
 
@@ -34,9 +34,9 @@ function Tasks() {
                 throw new Error("Failed to fetch tasks")
             }
 
-            const data = await response.json()
+           const data = await response.json()
 
-            setTasks(data)
+           setTasks(data.todos)
 
         } catch (error) {
            if (error.name !== "AbortError") {
@@ -79,7 +79,7 @@ function Tasks() {
           opacity: task.completed ? 0.5 : 1
         }}
       >
-        {task.title}
+        {task.todo}
       </span>
 
       <button onClick={() => toggleTask(task.id)}>
